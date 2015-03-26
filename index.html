@@ -14,7 +14,7 @@ registration: closed
 instructor: ["Ben Marwick", "Tracy Teal"]
 assistant: []
 contact: tkteal@datacarpentry.org
-raw: raw.github.com/datacarpentry/2015-03-30-stanford/gh-pages
+raw: raw.github.com/datacarpentry/2015-03-30-AAAS/gh-pages
 eventbrite: 
 ---
 <!--
@@ -32,41 +32,52 @@ eventbrite:
 </p>
 
 <p>
-Data Carpentry is an organization with the goal of teaching basic concepts, skills and tools for working more effectively with data. The rapid generation of large amounts of data is fundamentally changing how research is done. This deluge of data presents great opportunities, but also many challenges in managing, analyzing and sharing data. Data Carpentry teaches the skills that will enable researchers to be more effective and productive, to learners with little to no prior computational experience. In particular as large corpuses of text are becoming digitized and broadly available, it is now possible to take a quantitative approach to analyzing text to address questions in public policy, develop guidelines for implementation or assess the effectiveness of policy. As many of the types of data collected for this type of assessment is text based in the form of free text responses in surveys, written reports, newspaper articles or a variety of other sources, the ability to conduct text mining and analysis effectively and reproducibly will have an impact on the ability to understand and contribute knowledge to policy making. 
+<a href=http://datacarpentry.org/>Data Carpentry</a> is an organization with the goal of teaching basic concepts, skills and tools for working more effectively with data. The rapid generation of large amounts of data is fundamentally changing how research is done. This deluge of data presents great opportunities, but also many challenges in managing, analyzing and sharing data. Data Carpentry teaches the skills that will enable researchers to be more effective and productive, to learners with little to no prior computational experience. 
+
+In particular, as large corpora of text are becoming digitized and broadly available, it is now possible to take a quantitative approach to analyzing text to address questions in public policy, develop guidelines for implementation or assess the effectiveness of policy. As many of the types of data collected for this type of assessment are text-based, in the form of free text responses in surveys, written reports, newspaper articles or a variety of other sources, the ability to conduct text mining and analysis effectively and reproducibly will have an impact on the ability to understand and contribute knowledge to policy making. 
 <p>
-Data Carpentry workshops are for any researcher who has data they want to analyze, and no prior computational experience is required. This hands-on workshop teaches basic concepts, skills and tools for working more effectively with data. We will cover an introduction to R, how to use the tm package to convert text in to numbers and how to analyze and visualize the data in R. By the end of the workshop learners should be able to more effectively manage and analyze data and be able to apply the tools and approaches directly to their ongoing research. 
+Data Carpentry workshops are for any researcher who have data they want to analyze, and no prior computational experience is required. This hands-on workshop teaches basic concepts, skills and tools for working more effectively with data. We will cover an introduction to R, how to use the tm package to convert text into numbers, and how to analyze and visualize the data in R. By the end of the workshop learners should be able to more effectively manage and analyze data and be able to apply the tools and approaches directly to their ongoing research. 
 <p>
 <b>Participants should bring their laptops and plan to participate actively. Before the workshop 
-you will need to install R and RStudio. 
-<br><a href=https://github.com/datacarpentry/2015-03-30-AAAS/wiki>Installation instructions</a></b>
+you will need to install R and RStudio. Please see the <a href=https://github.com/datacarpentry/2015-03-30-AAAS/wiki>installation instructions</a></b> for more details. 
 
 <p>
 Data Carpentry's aim is to teach researchers basic concepts, skills,
 and tools for working with data so that they can get more done in less
 time, and with less pain.
 </p>
-<p>
-Preliminary schedule:
-<ul>
-<li>Morning 1: Getting survey data into R
-<li>Morning 2: Using the tm package in R to convert the text into numbers
-<li>Afternoon 1: Manipulating and analysing the data in R to summarise the free text data
-<li>Afternoon 2: Visualizing the results of the analysis with the ggplot2 package
-</ul>
 
-</p>
+
+<!--
+    Edit this block to show the syllabus and schedule for your bootcamp.
+-->
+
+<h2>Schedule</h2>
+
+<table class="table table-striped">
+  <tr> <td>Monday</td>  <td>09:00</td>  <td><a href = "https://github.com/datacarpentry/datacarpentry/tree/master/lessons/social_sciences_tm">Setup, introduction and motivation</a></td> </tr>
+  <tr> <td></td>        <td>09:30</td>  <td>Data input</td> </tr>
+  <tr> <td></td>        <td>10:30</td>  <td>Break</td> </tr>
+  <tr> <td></td>        <td>11:00</td>  <td>Getting the tm package</td> </tr>
+  <tr> <td></td>        <td>11:30</td>  <td>Preparing the Document Term Matrix </td> </tr>
+  <tr> <td></td>        <td>12:00</td>  <td>Lunch</td> </tr>
+  <tr> <td></td>        <td>13:00</td>  <td>Analysing the Document Term Matrix</td> </tr>
+  <tr> <td></td>        <td>14:30</td>  <td>Break</td> </tr>
+  <tr> <td></td>        <td>15:00</td>  <td>Visualising the Document Term Matrix</td> </tr> 
+  <tr> <td></td>        <td>16:00</td>  <td>Wrap-up</td> </tr>  
+ 
+</table>
+
+<hr/>
 
 <p>Before the workshop
 
 <p>Updates will be posted to this website as they become available.</p>
 
-<!--
-<p>Data files for the workshop are available at <a href = "/2015-01-15-cornell/data/biology/">the following link</a></p>
+<p>The data file for the workshop are available at <a href = "https://raw.githubusercontent.com/datacarpentry/datacarpentry/master/lessons/social_sciences_tm/survey_data.csv">the following link</a> (right-click and 'save as' to download to your computer)</p>
 
-<p>The etherpad for this workshop can be found <a href = "https://etherpad.mozilla.org/7XixtJSZJq">here</a></p>
+<p>The etherpad for this workshop can be found <a href = "https://etherpad.mozilla.org/2015-03-30-AAAS">here</a></p>
 
-<p>A static copy of the etherpad as of 5:30 on Friday after the workshop ended is <a href ="etherpad-snapshot-530-Friday.html">here</a></p>
--->
 
 <!-- This block displays the instructors' names if they are available. -->
 {% if page.instructor %}
@@ -74,9 +85,6 @@ Preliminary schedule:
   <strong>Instructors:</strong>
   {{page.instructor | join: ', ' %}}
 </p>
-<p>
-  <strong>Assistants:</strong>
-  {{page.assistant | join: ', ' %}}
 
 {% endif %}
 
@@ -130,7 +138,7 @@ Data Carpentry's teaching is hands-on, so participants are encouraged to bring i
   for questions and information not covered here.
 </p>
 
-<p><strong>Twitter</strong>: #datacarpentry</p> @datacarpentry
+<p><strong>Twitter</strong>: <a href=https://twitter.com/hashtag/datacarpentry/>#datacarpentry</a> <a href=https://twitter.com/datacarpentry>@datacarpentry</a>
 
 
 <h2>Acknowledgements &amp; Support</h2>
@@ -150,35 +158,11 @@ Data Carpentry is supported by the <a href=http://http://www.moore.org/>Gordon a
 {% endif %}
 
 
-<!--
-    Edit this block to show the syllabus and schedule for your bootcamp.
--->
-<!--
-<h2>Schedule</h2>
-(anticipate)
-<table class="table table-striped">
-  <tr> <td>Thursday</td>  <td>09:00</td>  <td><a href = "lessons/excel/ecology-examples/00-intro.html">Better Use of Spreadsheets</a></td> </tr>
-  <tr> <td></td>        <td></td>       <td>Refreshments will be served around 10:30.</td> </tr>
-  <tr> <td></td>        <td>12:00</td>  <td>Lunch break (on your own)</td> </tr>
-  <tr> <td></td>        <td>13:00</td>  <td>Cleaning and managing data with <a href="lessons/OpenRefine/open-refine-demo.html">OpenRefine</a>, <a href="lessons/sql/sql.html">Introduction to relational databases with SQLite</a> </td> </tr>
-  <tr> <td></td>        <td></td>       <td>Refreshments will be served around 14:30.</td> </tr>
-  <tr> <td></td>        <td>16:00</td>  <td>Wrap-up</td> </tr>
-  <tr> <td>Friday</td> <td>09:00</td>  <td> <a href="lessons/R/index.html"> Working with data in R </a></td> </tr>
-  <tr> <td></td>        <td></td>       <td>Refreshments will be served around 10:30.</td> </tr>
-  <tr> <td></td>        <td>12:00</td>  <td>Lunch break (on your own)</td> </tr>
-  <tr> <td></td>        <td>13:00</td>  <td> <a href = "lessons/shell/index.html">Workflows and automating repetitive tasks with command line shell </a>  </td> </tr>
-  <tr> <td></td>        <td></td>       <td>Refreshments will be served around 14:30.</td> </tr>
-  <tr> <td></td>        <td>16:00</td>  <td>Wrap-up</td> </tr>
-</table>
--->
-<hr/>
+
 
 <!--
     Edit the setup instructions in _includes/setup.html to reflect your bootcamp.
     (In particular, most bootcamps teach either Python or R, not both.)
-
-
-
 
 <h2>Additional Resources</h2>
 
@@ -189,6 +173,9 @@ Data Carpentry is supported by the <a href=http://http://www.moore.org/>Gordon a
 >Shell cheat sheet</a>
 <li><a href=http://software-carpentry.org/v4/shell/index.html>Software Carpentry shell lessons</a>
 </ul>
+-->
+
+<h2>Additional Resources</h2>
 
 <h3>R</h3>
 
@@ -210,6 +197,22 @@ Data Carpentry is supported by the <a href=http://http://www.moore.org/>Gordon a
 </ul>
 
 <p>
+<b>Working with text in R</b>
+<ul>
+<li><a href=http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf>http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf</a> - Introduction to the tm Package
+Text Mining in R
+<li><a href=http://www.jstatsoft.org/v25/i05/>http://www.jstatsoft.org/v25/i05/</a> - Text Mining Infrastructure in R (Journal of Statistical Software)
+<li><a href=http://cran.r-project.org/web/views/NaturalLanguageProcessing.html>http://cran.r-project.org/web/views/NaturalLanguageProcessing.html</a> - CRAN Task View: Natural Language Processing
+<li><a href=http://handsondatascience.com/TextMiningO.pdf>http://handsondatascience.com/TextMiningO.pdf</a> - Hands-On Data Science with R:
+Text Mining
+<li><a href=https://en.wikibooks.org/wiki/R_Programming/Text_Processing>https://en.wikibooks.org/wiki/R_Programming/Text_Processing</a> - R Programming/Text Processing
+<li><a href=http://www.matthewjockers.net/text-analysis-with-r-for-students-of-literature/>http://www.matthewjockers.net/text-analysis-with-r-for-students-of-literature/</a> - Matthew L. Jockers' Text Analysis with R for Students of Literature
+<li><a href=https://heuristically.wordpress.com/2011/04/08/text-data-mining-twitter-r/>https://heuristically.wordpress.com/2011/04/08/text-data-mining-twitter-r/</a> - Text Data Mining with Twitter and R
+
+</ul>
+
+
+<p>
 <b>Plotting in R</b>
 <ul>
 <li><a href=http://www.harding.edu/fmccown/r/>http://www.harding.edu/fmccown/r/</a> - Very simple graphs
@@ -219,7 +222,7 @@ Data Carpentry is supported by the <a href=http://http://www.moore.org/>Gordon a
 <li><a href=http://www.cookbook-r.com/Graphs/>Some of R Graphics Cookbook plots</a> - a set of some of the plots from the R Graphics Cookbook by Winston Chang
 <li><a href=http://rgm3.lab.nig.ac.jp/RGM/R_image_list?page=665&init=true>R Graphical Manual</a> - plots from apparently every R CRAN package
 </ul>
--->
+
 <!--
 <h2>Setup</h2>
 
