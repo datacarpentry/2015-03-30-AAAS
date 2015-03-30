@@ -1,0 +1,153 @@
+---
+title: "Untitled"
+author: "Ben Marwick"
+date: "March 30, 2015"
+output: html_document
+---
+
+
+Additional topics for the AAAS text mining workshop
+
+```{r}
+# wordclouds
+library("wordcloud")
+
+#  words and their frequencies from DTM
+m <- t(as.matrix(my_dtm_2_sparse_stopwords))
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+windows()
+# basic 
+wordcloud(d$word,d$freq)
+# with colours
+wordcloud(d$word,d$freq, colors = brewer.pal(6,"Dark2"), random.order = FALSE)
+```
+
+```{r}
+# cluster analysis
+
+# find groups of respondants using similar words
+windows()
+plot(hclust(dist(my_dtm_2_sparse_stopwords)))
+
+library(dplyr)
+my_dtm_2_sparse_stopwords %>%
+  dist %>%
+  hclust %>%
+  plot
+
+# find groups of words that are used together
+plot(hclust(dist(t(my_dtm_2_sparse_stopwords))))
+```
+
+
+```{r}
+
+# topic models
+library(topicmodels)
+
+# adapted from http://stackoverflow.com/questions/16004847/visualise-distances-between-texts/16010600
+
+# Find the sum of words in each Document
+rowTotals <- apply(my_dtm_2_sparse_stopwords , 1, sum) 
+
+# remove all docs without words
+my_dtm_sparse_stopwords_   <- my_dtm_2_sparse_stopwords[rowTotals > 0, ]           
+
+# Generate topic model
+k <- 10
+my_topics <- LDA(my_dtm_sparse_stopwords_, k)
+
+# top five words per topic
+Terms <- terms(my_topics, 5)
+
+# top five topics per document
+topics(my_topics, 5)
+
+# visualise network graph
+# make data frame where rows are documents, columns are topics and cells 
+# are posterior probabilities of topics
+my_topic_df <- setNames(as.data.frame(my_topics@gamma),  paste0("topic_",1:k))
+
+#### Euclidean distance matrix
+library(cluster)
+my_topic_df_dist <-  as.matrix(daisy(my_topic_df, metric =  "euclidean", stand = TRUE))
+# Change row values to zero if less than row minimum plus row standard deviation
+# This is how Jockers subsets the distance matrix to keep only 
+# closely related documents and avoid a dense spagetti diagram 
+# that's difficult to interpret (hat-tip: http://stackoverflow.com/a/16047196/1036500)
+my_topic_df_dist[ sweep(my_topic_df_dist, 1, (apply(my_topic_df_dist,1,min) + apply(my_topic_df_dist,1,sd) )) > 0 ] <- 0
+
+#### network diagram using Fruchterman & Reingold algorithm (Jockers uses the ForceAtlas2 algorithm which is unique to Gephi)
+library(igraph)
+g <- as.undirected(graph.adjacency(my_topic_df_dist))
+layout1 <- layout.fruchterman.reingold(g, niter=500)
+
+windows()
+plot(g, layout=layout1, edge.curved = TRUE, vertex.size = 1,  vertex.color= "grey", edge.arrow.size = 0.1, vertex.label.dist=0.5, vertex.label = NA)
+
+# this line will export from R and make the file 'my.graphml' in your working directory ready to open with Gephi
+write.graph(g, file="my.graphml", format="graphml")
+
+```
+
+
+
+```{r}
+# reading PDFs
+
+# Tell R what folder contains your 1000s of PDFs
+dest <- "C:/Users/marwick/Desktop/bens_dc_clone/PDFs"
+ 
+# make a vector of PDF file names
+myfiles <- list.files(path = dest, pattern = ".pdf|.PDF", full.names = TRUE)
+
+# https://gist.github.com/benmarwick/11333467
+############### PDF (text format) to TXT ###################
+ 
+                  ##### Wait! #####
+# Before proceeding, make sure you have a copy of pdf2text
+# on your computer! Details: https://en.wikipedia.org/wiki/Pdftotext
+# Download: http://www.foolabs.com/xpdf/download.html
+ 
+# If you have a PDF with text, ie. you can open the PDF in a 
+# PDF viewer and select text with your curser, then use these 
+# lines to convert each PDF file that is named in the vector 
+# into text file is created in the same directory as the PDFs
+# note that my pdftotext.exe is in a different location to yours
+lapply(myfiles, function(i) system(paste('"C:/Program Files/xpdf/bin64/pdftotext.exe"', paste0('"', i, '"')), wait = FALSE) )
+ 
+# where are the txt files you just made?
+dest # in this folder
+ 
+# And now you're ready to do some text mining on the text files
+```
+
+```{r}
+# reading MS Word docs
+library(tm)
+readDOC(...) #  needs the tool antiword installed and accessible on your system
+
+```
+
+
+
+```{r}
+# scraping text from the web
+library(rvest)
+library(dplyr)
+
+webpage <- html(...)
+
+# identify elements on the page... using selectorgadget
+text_node <- ".yt-lockup-meta-info li:nth-child(1)"
+
+
+# extract text on page
+my_web_text <- webpage %>% 
+  html_nodes(viewtext_nodes_node) %>%
+  html_text() 
+
+
+```
